@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION=9.006.04
+VERSION=9.016.01
 
 # init
 apt install make dkms net-tools
@@ -8,6 +8,7 @@ apt install make dkms net-tools
 # untar
 if [ ! -d "/usr/src/r8125-${VERSION}" ]; then
     tar -jxvf r8125-${VERSION}.tar.bz2 -C /usr/src
+    sed -i "s/{{ PACKAGE_VERSION }}/${VERSION}/" dkms.conf
     cp dkms.conf /usr/src/r8125-${VERSION}/
 fi
 
